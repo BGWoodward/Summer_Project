@@ -2,7 +2,7 @@
 """
 Created on Sat Jun 14 16:55:54 2014
 
-@author: Ben
+@author: Ben Woodward
 """
 
 import csv
@@ -58,3 +58,11 @@ for i,element in enumerate(Training_Data.element_list[1:]):
 
 scaler = preprocessing.StandardScaler().fit(Features)
 Scaled_Data = scaler.transform(Features)
+
+#Save off the files so we don't have to recalculate them again, as it is a
+#time consuming process
+
+np.savetxt('Scaled_Features.csv',Scaled_Data,delimiter=',')
+np.save('Scaled_Features_npy',Scaled_Data)
+np.save('Signal_Indices',Signal_Indices)
+np.save('Background_Indices',Background_Indices)
