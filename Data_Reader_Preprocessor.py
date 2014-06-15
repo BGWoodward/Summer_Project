@@ -30,17 +30,18 @@ class Training_Cache:
     def add_element(self,values,label):
         self.element_list.append(Training_Element(values,label))
 
-
 Training_Data = Training_Cache()
 
-#for j,row in enumerate(reader):
 for row in reader: #iterate through every row
     B = []
     for i in row[:-1]:
         B = np.append(B,float(i))
     Training_Data.add_element(B,row[-1])
 
-
+Weights = []
+Weights.append(Training_Data.element_list[0].weight)
+ID = []
+ID.append(Training_Data.element_list[0].ID)
 Signal_Indices = []
 Background_Indices =[]
 Features = Training_Data.element_list[0].features
@@ -51,6 +52,8 @@ else:
 
 for i,element in enumerate(Training_Data.element_list[1:]):
     Features = np.vstack([Features,element.features])
+    Weights.append(element.weight)
+    ID.append(element.ID)
     if element.label == 's':
         Signal_Indices.append(i)
     else:
@@ -66,3 +69,5 @@ np.savetxt('Scaled_Features.csv',Scaled_Data,delimiter=',')
 np.save('Scaled_Features_npy',Scaled_Data)
 np.save('Signal_Indices',Signal_Indices)
 np.save('Background_Indices',Background_Indices)
+np.save('Weights',Weights)
+np.save('IDs',ID)

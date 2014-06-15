@@ -1,3 +1,2 @@
-Reader
 Classifier architectures
 Writer with ranking
