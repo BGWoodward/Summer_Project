@@ -1,2 +1,18 @@
-Classifier architectures
-Writer with ranking
+Feature ideas
+-PCA
+-Recursive Feature Elimination
+-Other
+#Point is to see if there is value in reducing the feature space
+
+Classifier ideas
+-SVM (obv)
+ -Linear
+ -Poly
+ -RBF
+-Random Forests
+-KNN
+-Neural Net?
+-Gaussian Mixture
+
+I/O stuff
+Writer with ranking and AMS calculation
